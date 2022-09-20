@@ -409,7 +409,7 @@ def execute(augeas_instance, commands):
                 result = False
         elif command == 'ins':
             label = params['label']
-            if params['comment']:
+            if 'comment' in params:
                 path = os.path.dirname(params['path'])
                 path += '/#comment[ . =~ regexp("%s( |=).*") ]' % label
             else:
@@ -425,7 +425,7 @@ def execute(augeas_instance, commands):
             result = changed = True
         elif command == 'edit':
             label = params['label']
-            if params['comment']:
+            if 'comment' in params:
                 path = os.path.dirname(params['path'])
                 path += '/#comment[ . =~ regexp("%s( |=).*") ]' % label
             else:
